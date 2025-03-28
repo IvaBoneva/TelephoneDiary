@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Mobiles]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)
