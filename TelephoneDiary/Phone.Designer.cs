@@ -235,6 +235,7 @@
             btnDelete.TabIndex = 14;
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // Phone
             // 

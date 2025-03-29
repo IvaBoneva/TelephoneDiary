@@ -80,11 +80,38 @@ VALUES (@First, @Last, @Mobile, @Email, @Category)", con))
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            txtBoxFName.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            txtBoxLName.Text = dataGridView1.SelectedRows[1].Cells[1].Value.ToString();
-            txtBoxMobile.Text = dataGridView1.SelectedRows[2].Cells[2].Value.ToString();
-            txtBoxEmail.Text = dataGridView1.SelectedRows[3].Cells[3].Value.ToString();
-            comboBoxCategory.Text = dataGridView1.SelectedRows[4].Cells[4].Value.ToString();
+            if (dataGridView1.SelectedRows.Count > 0) // Проверка дали има избран ред
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0]; // Вземаме първия избран ред
+
+                txtBoxFName.Text = row.Cells[0].Value?.ToString();
+                txtBoxLName.Text = row.Cells[1].Value?.ToString();
+                txtBoxMobile.Text = row.Cells[2].Value?.ToString();
+                txtBoxEmail.Text = row.Cells[3].Value?.ToString();
+                comboBoxCategory.Text = row.Cells[4].Value?.ToString();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            using (SqlCommand cmd = new SqlCommand(@"DELETE FROM Mobiles 
+WHERE (Mobile = @Mobile)", con))
+            {
+                cmd.Parameters.AddWithValue("@Mobile", txtBoxMobile.Text);
+                cmd.ExecuteNonQuery();  // Изпълнява SQL командата
+            }
+
+
+            con.Close();
+            MessageBox.Show("Successfully deleted...!");
+            Display();
+            txtBoxFName.Clear();
+            txtBoxLName.Clear();
+            txtBoxMobile.Clear();
+            txtBoxEmail.Clear();
+            comboBoxCategory.SelectedIndex = -1;
+            txtBoxFName.Focus();
         }
     }
 }
