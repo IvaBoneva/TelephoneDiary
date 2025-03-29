@@ -113,5 +113,25 @@ WHERE (Mobile = @Mobile)", con))
             comboBoxCategory.SelectedIndex = -1;
             txtBoxFName.Focus();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            using (SqlCommand cmd = new SqlCommand(@"UPDATE Mobiles 
+SET First = @First, Last = @Last, Mobile = @Mobile, Email = @Email, Category = @Category
+WHERE (Mobile = @Mobile)", con))
+            {
+                cmd.Parameters.AddWithValue("@First", txtBoxFName.Text);
+                cmd.Parameters.AddWithValue("@Last", txtBoxLName.Text);
+                cmd.Parameters.AddWithValue("@Mobile", txtBoxMobile.Text);
+                cmd.Parameters.AddWithValue("@Email", txtBoxEmail.Text);
+                cmd.Parameters.AddWithValue("@Category", comboBoxCategory.Text);
+
+                cmd.ExecuteNonQuery();  // Изпълнява SQL командата
+                con.Close();
+                MessageBox.Show("Successfully updated...!");
+                Display();
+            }
+        }
     }
 }
