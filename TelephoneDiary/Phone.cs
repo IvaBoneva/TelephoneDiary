@@ -27,7 +27,7 @@ namespace TelephoneDiary
 
         private void Phone_Load(object sender, EventArgs e)
         {
-
+            Display();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,15 +58,16 @@ VALUES (@First, @Last, @Mobile, @Email, @Category)", con))
 
             con.Close();
             MessageBox.Show("Successfully saved...!");
+            Display();
         }
 
         void Display()
         {
-            SqlDataAdapter sda=new SqlDataAdapter("Select * from Mobiles",con);
-            DataTable dt = new DataTable(); 
+            SqlDataAdapter sda = new SqlDataAdapter("Select * from Mobiles", con);
+            DataTable dt = new DataTable();
             sda.Fill(dt);
             dataGridView1.Rows.Clear();
-            foreach(DataRow item in dt.Rows)
+            foreach (DataRow item in dt.Rows)
             {
                 int n = dataGridView1.Rows.Add();
                 dataGridView1.Rows[n].Cells[0].Value = item[0].ToString();
@@ -75,6 +76,15 @@ VALUES (@First, @Last, @Mobile, @Email, @Category)", con))
                 dataGridView1.Rows[n].Cells[3].Value = item[3].ToString();
                 dataGridView1.Rows[n].Cells[4].Value = item[4].ToString();
             }
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtBoxFName.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            txtBoxLName.Text = dataGridView1.SelectedRows[1].Cells[1].Value.ToString();
+            txtBoxMobile.Text = dataGridView1.SelectedRows[2].Cells[2].Value.ToString();
+            txtBoxEmail.Text = dataGridView1.SelectedRows[3].Cells[3].Value.ToString();
+            comboBoxCategory.Text = dataGridView1.SelectedRows[4].Cells[4].Value.ToString();
         }
     }
 }
