@@ -48,13 +48,14 @@
             btnInsert = new Button();
             btnUpdate = new Button();
             btnDelete = new Button();
+            txtBoxSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btnNew
             // 
             btnNew.Font = new Font("Segoe UI", 12F);
-            btnNew.Location = new Point(521, 59);
+            btnNew.Location = new Point(507, 47);
             btnNew.Name = "btnNew";
             btnNew.Size = new Size(151, 51);
             btnNew.TabIndex = 5;
@@ -65,7 +66,7 @@
             // txtBoxLName
             // 
             txtBoxLName.Font = new Font("Segoe UI", 13.8F);
-            txtBoxLName.Location = new Point(193, 101);
+            txtBoxLName.Location = new Point(193, 93);
             txtBoxLName.Name = "txtBoxLName";
             txtBoxLName.Size = new Size(289, 38);
             txtBoxLName.TabIndex = 1;
@@ -73,7 +74,7 @@
             // txtBoxMobile
             // 
             txtBoxMobile.Font = new Font("Segoe UI", 13.8F);
-            txtBoxMobile.Location = new Point(193, 148);
+            txtBoxMobile.Location = new Point(193, 140);
             txtBoxMobile.Name = "txtBoxMobile";
             txtBoxMobile.Size = new Size(289, 38);
             txtBoxMobile.TabIndex = 2;
@@ -81,7 +82,7 @@
             // txtBoxEmail
             // 
             txtBoxEmail.Font = new Font("Segoe UI", 13.8F);
-            txtBoxEmail.Location = new Point(193, 195);
+            txtBoxEmail.Location = new Point(193, 187);
             txtBoxEmail.Name = "txtBoxEmail";
             txtBoxEmail.Size = new Size(289, 38);
             txtBoxEmail.TabIndex = 3;
@@ -89,7 +90,7 @@
             // txtBoxFName
             // 
             txtBoxFName.Font = new Font("Segoe UI", 13.8F);
-            txtBoxFName.Location = new Point(193, 54);
+            txtBoxFName.Location = new Point(193, 46);
             txtBoxFName.Name = "txtBoxFName";
             txtBoxFName.Size = new Size(289, 38);
             txtBoxFName.TabIndex = 0;
@@ -147,7 +148,7 @@
             // 
             lblFName.AutoSize = true;
             lblFName.Font = new Font("Segoe UI", 13.8F);
-            lblFName.Location = new Point(45, 54);
+            lblFName.Location = new Point(58, 46);
             lblFName.Name = "lblFName";
             lblFName.Size = new Size(129, 31);
             lblFName.TabIndex = 7;
@@ -157,7 +158,7 @@
             // 
             lblMobile.AutoSize = true;
             lblMobile.Font = new Font("Segoe UI", 13.8F);
-            lblMobile.Location = new Point(81, 148);
+            lblMobile.Location = new Point(94, 140);
             lblMobile.Name = "lblMobile";
             lblMobile.Size = new Size(91, 31);
             lblMobile.TabIndex = 9;
@@ -167,7 +168,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 13.8F);
-            lblEmail.Location = new Point(97, 195);
+            lblEmail.Location = new Point(110, 187);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(75, 31);
             lblEmail.TabIndex = 10;
@@ -177,7 +178,7 @@
             // 
             lblCategory.AutoSize = true;
             lblCategory.Font = new Font("Segoe UI", 13.8F);
-            lblCategory.Location = new Point(61, 242);
+            lblCategory.Location = new Point(74, 234);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(111, 31);
             lblCategory.TabIndex = 11;
@@ -187,7 +188,7 @@
             // 
             lblLName.AutoSize = true;
             lblLName.Font = new Font("Segoe UI", 13.8F);
-            lblLName.Location = new Point(47, 101);
+            lblLName.Location = new Point(60, 93);
             lblLName.Name = "lblLName";
             lblLName.Size = new Size(127, 31);
             lblLName.TabIndex = 8;
@@ -200,7 +201,7 @@
             comboBoxCategory.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             comboBoxCategory.FormattingEnabled = true;
             comboBoxCategory.Items.AddRange(new object[] { "HOME", "OFFICE", "BUSSINESS", "FRIENDS", "FAMILY" });
-            comboBoxCategory.Location = new Point(193, 242);
+            comboBoxCategory.Location = new Point(193, 234);
             comboBoxCategory.Name = "comboBoxCategory";
             comboBoxCategory.Size = new Size(289, 39);
             comboBoxCategory.TabIndex = 4;
@@ -208,7 +209,7 @@
             // btnInsert
             // 
             btnInsert.Font = new Font("Segoe UI", 12F);
-            btnInsert.Location = new Point(521, 116);
+            btnInsert.Location = new Point(507, 104);
             btnInsert.Name = "btnInsert";
             btnInsert.Size = new Size(151, 51);
             btnInsert.TabIndex = 13;
@@ -219,7 +220,7 @@
             // btnUpdate
             // 
             btnUpdate.Font = new Font("Segoe UI", 12F);
-            btnUpdate.Location = new Point(521, 230);
+            btnUpdate.Location = new Point(507, 218);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(151, 51);
             btnUpdate.TabIndex = 15;
@@ -230,7 +231,7 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Segoe UI", 12F);
-            btnDelete.Location = new Point(521, 173);
+            btnDelete.Location = new Point(507, 161);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(151, 51);
             btnDelete.TabIndex = 14;
@@ -238,11 +239,21 @@
             btnDelete.UseVisualStyleBackColor = true;
             btnDelete.Click += btnDelete_Click;
             // 
+            // txtBoxSearch
+            // 
+            txtBoxSearch.Font = new Font("Segoe UI", 13.8F);
+            txtBoxSearch.Location = new Point(507, 275);
+            txtBoxSearch.Name = "txtBoxSearch";
+            txtBoxSearch.Size = new Size(272, 38);
+            txtBoxSearch.TabIndex = 16;
+            txtBoxSearch.TextChanged += txtBoxSearch_TextChanged;
+            // 
             // Phone
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(791, 602);
+            Controls.Add(txtBoxSearch);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnInsert);
@@ -288,5 +299,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private TextBox txtBoxSearch;
     }
 }

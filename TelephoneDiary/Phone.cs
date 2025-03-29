@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using Microsoft.Data.SqlClient;
 
 namespace TelephoneDiary
@@ -131,6 +130,23 @@ WHERE (Mobile = @Mobile)", con))
                 con.Close();
                 MessageBox.Show("Successfully updated...!");
                 Display();
+            }
+        }
+
+        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter("Select * from Mobiles Where (Mobile like '%" + txtBoxSearch.Text + "%') or (First like '%" + txtBoxSearch.Text + "%') or (Last like '%" + txtBoxSearch.Text + "%')", con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            dataGridView1.Rows.Clear();
+            foreach (DataRow item in dt.Rows)
+            {
+                int n = dataGridView1.Rows.Add();
+                dataGridView1.Rows[n].Cells[0].Value = item[0].ToString();
+                dataGridView1.Rows[n].Cells[1].Value = item[1].ToString();
+                dataGridView1.Rows[n].Cells[2].Value = item[2].ToString();
+                dataGridView1.Rows[n].Cells[3].Value = item[3].ToString();
+                dataGridView1.Rows[n].Cells[4].Value = item[4].ToString();
             }
         }
     }
