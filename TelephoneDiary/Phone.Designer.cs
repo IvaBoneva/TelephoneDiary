@@ -34,20 +34,20 @@
             txtBoxEmail = new TextBox();
             txtBoxFName = new TextBox();
             dataGridView1 = new DataGridView();
+            lblFName = new Label();
+            lblMobile = new Label();
+            lblEmail = new Label();
+            lblCategory = new Label();
+            lblLName = new Label();
+            comboBoxCategory = new ComboBox();
+            btnInsert = new Button();
+            btnUpdate = new Button();
+            btnDelete = new Button();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
-            lblFName = new Label();
-            lblMobile = new Label();
-            lblEmail = new Label();
-            lblCatagory = new Label();
-            lblLName = new Label();
-            comboBoxCatagory = new ComboBox();
-            btnInsert = new Button();
-            btnUpdate = new Button();
-            btnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -104,42 +104,6 @@
             dataGridView1.Size = new Size(767, 256);
             dataGridView1.TabIndex = 12;
             // 
-            // Column1
-            // 
-            Column1.HeaderText = "First Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column2.HeaderText = "Last Name";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Mobile";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 150;
-            // 
-            // Column4
-            // 
-            Column4.FillWeight = 150F;
-            Column4.HeaderText = "Email";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 125;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Catagory";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 125;
-            // 
             // lblFName
             // 
             lblFName.AutoSize = true;
@@ -170,15 +134,15 @@
             lblEmail.TabIndex = 10;
             lblEmail.Text = "Email:";
             // 
-            // lblCatagory
+            // lblCategory
             // 
-            lblCatagory.AutoSize = true;
-            lblCatagory.Font = new Font("Segoe UI", 13.8F);
-            lblCatagory.Location = new Point(61, 242);
-            lblCatagory.Name = "lblCatagory";
-            lblCatagory.Size = new Size(111, 31);
-            lblCatagory.TabIndex = 11;
-            lblCatagory.Text = "Catagory:";
+            lblCategory.AutoSize = true;
+            lblCategory.Font = new Font("Segoe UI", 13.8F);
+            lblCategory.Location = new Point(61, 242);
+            lblCategory.Name = "lblCategory";
+            lblCategory.Size = new Size(111, 31);
+            lblCategory.TabIndex = 11;
+            lblCategory.Text = "Category:";
             // 
             // lblLName
             // 
@@ -191,16 +155,16 @@
             lblLName.Text = "Last Name:";
             lblLName.Click += label5_Click;
             // 
-            // comboBoxCatagory
+            // comboBoxCategory
             // 
-            comboBoxCatagory.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxCatagory.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            comboBoxCatagory.FormattingEnabled = true;
-            comboBoxCatagory.Items.AddRange(new object[] { "HOME", "OFFICE", "BUSSINESS", "FRIENDS", "FAMILY" });
-            comboBoxCatagory.Location = new Point(193, 242);
-            comboBoxCatagory.Name = "comboBoxCatagory";
-            comboBoxCatagory.Size = new Size(289, 39);
-            comboBoxCatagory.TabIndex = 4;
+            comboBoxCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCategory.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            comboBoxCategory.FormattingEnabled = true;
+            comboBoxCategory.Items.AddRange(new object[] { "HOME", "OFFICE", "BUSSINESS", "FRIENDS", "FAMILY" });
+            comboBoxCategory.Location = new Point(193, 242);
+            comboBoxCategory.Name = "comboBoxCategory";
+            comboBoxCategory.Size = new Size(289, 39);
+            comboBoxCategory.TabIndex = 4;
             // 
             // btnInsert
             // 
@@ -233,6 +197,42 @@
             btnDelete.Text = "DELETE";
             btnDelete.UseVisualStyleBackColor = true;
             // 
+            // Column1
+            // 
+            Column1.HeaderText = "First Name";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column2.HeaderText = "Last Name";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Mobile";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 150;
+            // 
+            // Column4
+            // 
+            Column4.FillWeight = 150F;
+            Column4.HeaderText = "Email";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Width = 125;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Category";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.Width = 125;
+            // 
             // Phone
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -241,9 +241,9 @@
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnInsert);
-            Controls.Add(comboBoxCatagory);
+            Controls.Add(comboBoxCategory);
             Controls.Add(lblLName);
-            Controls.Add(lblCatagory);
+            Controls.Add(lblCategory);
             Controls.Add(lblEmail);
             Controls.Add(lblMobile);
             Controls.Add(lblFName);
@@ -272,9 +272,9 @@
         private Label lblFName;
         private Label lblMobile;
         private Label lblEmail;
-        private Label lblCatagory;
+        private Label lblCategory;
         private Label lblLName;
-        private ComboBox comboBoxCatagory;
+        private ComboBox comboBoxCategory;
         private Button btnInsert;
         private Button btnUpdate;
         private Button btnDelete;

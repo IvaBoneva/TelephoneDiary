@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
+using Microsoft.Data.SqlClient;
 
 namespace TelephoneDiary
 {
     public partial class Phone : Form
     {
+        SqlConnection con = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=Phone;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
         public Phone()
         {
             InitializeComponent();
@@ -34,13 +36,45 @@ namespace TelephoneDiary
             txtBoxLName.Clear();
             txtBoxMobile.Clear();
             txtBoxEmail.Clear();
-            comboBoxCatagory.SelectedIndex = -1;
+            comboBoxCategory.SelectedIndex = -1;
             txtBoxFName.Focus();
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            con.Open();
+            using (SqlCommand cmd = new SqlCommand(@"INSERT INTO Mobiles (First, Last, Mobile, Email, Category) 
+VALUES (@First, @Last, @Mobile, @Email, @Category)", con))
+            {
+                cmd.Parameters.AddWithValue("@First", txtBoxFName.Text);
+                cmd.Parameters.AddWithValue("@Last", txtBoxLName.Text);
+                cmd.Parameters.AddWithValue("@Mobile", txtBoxMobile.Text);
+                cmd.Parameters.AddWithValue("@Email", txtBoxEmail.Text);
+                cmd.Parameters.AddWithValue("@Category", comboBoxCategory.Text);
 
+                cmd.ExecuteNonQuery();  // Изпълнява SQL командата
+            }
+
+
+            con.Close();
+            MessageBox.Show("Successfully saved...!");
+        }
+
+        void Display()
+        {
+            SqlDataAdapter sda=new SqlDataAdapter("Select * from Mobiles",con);
+            DataTable dt = new DataTable(); 
+            sda.Fill(dt);
+            dataGridView1.Rows.Clear();
+            foreach(DataRow item in dt.Rows)
+            {
+                int n = dataGridView1.Rows.Add();
+                dataGridView1.Rows[n].Cells[0].Value = item[0].ToString();
+                dataGridView1.Rows[n].Cells[1].Value = item[1].ToString();
+                dataGridView1.Rows[n].Cells[2].Value = item[2].ToString();
+                dataGridView1.Rows[n].Cells[3].Value = item[3].ToString();
+                dataGridView1.Rows[n].Cells[4].Value = item[4].ToString();
+            }
         }
     }
 }
