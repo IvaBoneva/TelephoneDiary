@@ -117,7 +117,7 @@ WHERE (Mobile = @Mobile)", con))
         {
             con.Open();
             using (SqlCommand cmd = new SqlCommand(@"UPDATE Mobiles 
-SET First = @First, Last = @Last, Mobile = @Mobile, Email = @Email, Category = @Category
+SET First = @First, Last = @Last, Email = @Email, Category = @Category
 WHERE (Mobile = @Mobile)", con))
             {
                 cmd.Parameters.AddWithValue("@First", txtBoxFName.Text);
@@ -127,10 +127,11 @@ WHERE (Mobile = @Mobile)", con))
                 cmd.Parameters.AddWithValue("@Category", comboBoxCategory.Text);
 
                 cmd.ExecuteNonQuery();  // Изпълнява SQL командата
+             
+            }   
                 con.Close();
                 MessageBox.Show("Successfully updated...!");
                 Display();
-            }
         }
 
         private void txtBoxSearch_TextChanged(object sender, EventArgs e)
