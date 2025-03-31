@@ -61,7 +61,7 @@
             btnNew.TabIndex = 5;
             btnNew.Text = "NEW";
             btnNew.UseVisualStyleBackColor = true;
-            btnNew.Click += button1_Click;
+            btnNew.Click += btnNew_Click;
             // 
             // txtBoxLName
             // 

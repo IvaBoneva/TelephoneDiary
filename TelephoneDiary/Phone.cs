@@ -29,7 +29,7 @@ namespace TelephoneDiary
             Display();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnNew_Click(object sender, EventArgs e)
         {
             txtBoxFName.Clear();
             txtBoxLName.Clear();
